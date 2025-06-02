@@ -15,5 +15,11 @@ Find loci that represent fixed differences between Clat and Xtex
 * The output will be a list of Stacks locus identifiers. Capture this in a text file:
 * ./locids.sh > whitelist.txt
 
-Step 4
+## Step 4
 * Run stacks populations module again to get whitelisted loci in all samples for bgc input.
+
+
+<hr>
+
+## NOTES
+* The `vcf2bgc.py` script included here is a modified version of the original script packaged with the [ClineHelpR](https://github.com/btmartin721/ClineHelpR) R package. It includes a `-c` / `--cm` option to allow the user to specify the frequency of genetic recombination in cM/Mb. This information is used by the linkage model in bgc. Previously the script expressed distance between loci as a proportion of the length of the chromosome on which the loci were found. 
