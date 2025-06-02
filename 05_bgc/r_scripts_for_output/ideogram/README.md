@@ -16,4 +16,4 @@ ideogramAlpha.pl > alpha.txt
 ```
 ideogramBeta.pl > beta.txt
 ```
-* `ideogram.R` is used for visualizing outputs on an ideogram
+* Code in `ideogram.R` is used for visualizing outputs on an ideogram
