@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Data::Dumper;
 
-my $file = "dx2003_rerun.txt";
+my $file = "dx2003_mean.txt";
 my $map = "rbs.chrom.map.txt";
 
 my @fileArray;

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Data::Dumper;
 
-my $file = "dx2003_rerun.txt";
+my $file = "dx2003_mean.txt";
 my $map = "rbs.chrom.map.txt";
 
 my @fileArray;
@@ -41,12 +41,16 @@ foreach my $line( @fileArray ){
 			print "\t";
 			print $temp[2];
 			print "\t";
-			print "6a3d9a";
+			print "E69F00";
 			print "\n";
 		}else{
 			if( $temp[9] eq "TRUE" ){
 				#print "alpha true\n";
-				print "alpha";
+				if( $temp[7] eq "pos" ){
+					print "alpha-RBS";
+				}elsif( $temp[7] eq "neg" ){
+					print "alpha-FMS";
+				}
 				print "\ttriangle";
 				print "\t";
 				print $hash{$temp[1]};
@@ -55,11 +59,19 @@ foreach my $line( @fileArray ){
 				print "\t";
 				print $temp[2];
 				print "\t";
-				print "33a02c";
+				if( $temp[7] eq "pos" ){
+					print "F0E442";
+				}elsif( $temp[7] eq "neg" ){
+					print "999999";
+				}
 				print "\n";
 			}elsif( $temp[10] eq "TRUE" ){
 				#print "beta true\n";
-				print "beta";
+				if( $temp[8] eq "pos" ){
+					print "beta-positive";
+				}elsif( $temp[8] eq "neg" ){
+					print "beta-negative";
+				}
 				print "\tbox";
 				print "\t";
 				print $hash{$temp[1]};
@@ -68,20 +80,24 @@ foreach my $line( @fileArray ){
 				print "\t";
 				print $temp[2];
 				print "\t";
-				print "ff7f00";
+				if( $temp[8] eq "pos" ){
+					print "D55E00";
+				}elsif( $temp[8] eq "neg" ){
+					print "009E73";
+				}
 				print "\n";
-			#}else{
-			#	print "non-outlier";
-			#	print "\tcircle";
-			#	print "\t";
-			#	print $hash{$temp[1]};
-			#	print "\t";
-			#	print $temp[2];
-			#	print "\t";
-			#	print $temp[2];
-			#	print "\t";
-			#	print "899499";
-			#	print "\n";
+			}else{
+				print "non-outlier";
+				print "\tcircle";
+				print "\t";
+				print $hash{$temp[1]};
+				print "\t";
+				print $temp[2];
+				print "\t";
+				print $temp[2];
+				print "\t";
+				print "E5E5E5";
+				print "\n";
 			}
 		}
 	}
