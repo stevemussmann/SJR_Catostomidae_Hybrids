@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/992274349.svg)](https://doi.org/10.5281/zenodo.21074476)
+
 # San Juan River Catostomidae Hybrids
 
 This repository contains scripts and data associated with:
