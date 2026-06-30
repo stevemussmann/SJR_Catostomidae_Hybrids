@@ -110,13 +110,13 @@ trianglePlot <- function(qQ, ll, lr, title){
                  color = "black", linewidth = 0.5) +
     xlim(-0.02, 1.02)+
     ylim(-0.02, 1.02) +
-    annotate("text", x=0.1, y=0.02, label = ll, fontface = "bold", size = 4) +
-    annotate("text", x=0.9, y=0.02, label = lr, fontface = "bold", size = 4) +
+    annotate("text", x=0.1, y=0.02, label = ll, fontface = "bold", size = 5) +
+    annotate("text", x=0.9, y=0.02, label = lr, fontface = "bold", size = 5) +
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
           panel.background = element_blank(), axis.line = element_line(colour = "black"),
-          axis.text = element_text(size=12),
-          axis.title = element_text(size = 14),
-          plot.title = element_text(size = 16, face = "bold"),
+          axis.text = element_text(size=14),
+          axis.title = element_text(size = 16),
+          plot.title = element_text(size = 18, face = "bold"),
           legend.position = c(0.675, 1),
           legend.justification = c("left", "top"),
           legend.text = element_text(size = 14),
@@ -143,20 +143,20 @@ dummy.plot <- ggplot(data = CDFMqQ, aes(x = qmean, y = Qmean)) +
                color = "black", linewidth = 0.5) +
   xlim(-0.02, 1.02)+
   ylim(-0.02, 1.02) +
-  annotate("text", x=0.12, y=0.02, label = "Species A", fontface = "bold", size = 4) +
-  annotate("text", x=0.88, y=0.02, label = "Species B", fontface = "bold", size = 4) +
-  annotate("text", x=0.5, y=0.08, label = "Historical", fontface = "bold", size = 4) +
-  annotate("text", x=0.5, y=0.02, label = "Hybridization", fontface = "bold", size = 4) +
-  annotate("text", x=0.5, y=0.94, label = "F1", fontface = "bold", size = 4) +
-  annotate("text", x=0.5, y=0.5, label = "F2", fontface = "bold", size = 4) +
-  annotate("text", x=0.5, y=0.25, label = "F3", fontface = "bold", size = 4) +
-  annotate("text", x=0.2, y=0.5, label = "Species A Bx", fontface = "bold", size = 4, angle = 60) +
-  annotate("text", x=0.8, y=0.5, label = "Species B Bx", fontface = "bold", size = 4, angle = -60) +
+  annotate("text", x=0.14, y=0.02, label = "Species A", fontface = "bold", size = 5) +
+  annotate("text", x=0.86, y=0.02, label = "Species B", fontface = "bold", size = 5) +
+  annotate("text", x=0.5, y=0.08, label = "Historical", fontface = "bold", size = 5) +
+  annotate("text", x=0.5, y=0.02, label = "Hybridization", fontface = "bold", size = 5) +
+  annotate("text", x=0.5, y=0.92, label = "F1", fontface = "bold", size = 5) +
+  annotate("text", x=0.5, y=0.5, label = "F2", fontface = "bold", size = 5) +
+  annotate("text", x=0.5, y=0.25, label = "F3", fontface = "bold", size = 5) +
+  annotate("text", x=0.2, y=0.5, label = "Species A Bx", fontface = "bold", size = 5, angle = 60) +
+  annotate("text", x=0.8, y=0.5, label = "Species B Bx", fontface = "bold", size = 5, angle = -60) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"),
-        axis.text = element_text(size=12),
-        axis.title = element_text(size = 14),
-        plot.title = element_text(size = 16, face = "bold")) +
+        axis.text = element_text(size=14),
+        axis.title = element_text(size = 16),
+        plot.title = element_text(size = 18, face = "bold")) +
   ylab(expression(bold("Q" ["12"]))) +
   xlab(expression(bold("q"))) +
   ggtitle("A.")
