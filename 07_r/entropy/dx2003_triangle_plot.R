@@ -7,10 +7,11 @@ library("cowplot")
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 # function to parse input files
-parseFiles <- function(namefile, qfile, Qfile){
+parseFiles <- function(namefile, qfile, Qfile, Hfile){
   names <- read.csv(namefile, header=FALSE)
   q<-read.csv(qfile, header=TRUE)
   Q<-read.csv(Qfile, header=TRUE)
+  hyb<-read.csv(Hfile, header=TRUE)
   
   q_filt <- q %>% filter(str_detect(param, "pop_0"))
   Q_filt <- Q %>% filter(str_detect(param, "_anc_2-1"))
@@ -22,15 +23,16 @@ parseFiles <- function(namefile, qfile, Qfile){
   QNamed <- rename(QNamed, Qparam = param, Qmean = mean, Qmed = median, Qci_0.950_LB = ci_0.950_LB, Qci_0.950_UB = ci_0.950_UB, name = V1)
   
   qQ <- left_join(qNamed, QNamed, by = "name")
+  qQ <- left_join(qQ, hyb, by = "name")
   
   return(qQ)
   
 }
 
 # read the input files
-CDFMqQ <- parseFiles("Cdis_x_Clat.pl.names.txt", "Cdis_x_Clat.admixest.txt", "Cdis_x_Clat.Q12.txt") # cdis x clat
-CDXTqQ <- parseFiles("Cdis_x_Xtex.pl.names.txt", "Cdis_x_Xtex.admixest.txt", "Cdis_x_Xtex.Q12.txt") # cdis x xtex
-FMXTqQ <- parseFiles("Clat_x_Xtex.pl.names.txt", "Clat_x_Xtex.admixest.txt", "Clat_x_Xtex.Q12.txt") # Clat x xtex
+CDFMqQ <- parseFiles("Cdis_x_Clat.pl.names.txt", "Cdis_x_Clat.admixest.txt", "Cdis_x_Clat.Q12.txt", "dx2003_hybrid_calls.csv") # cdis x clat
+CDXTqQ <- parseFiles("Cdis_x_Xtex.pl.names.txt", "Cdis_x_Xtex.admixest.txt", "Cdis_x_Xtex.Q12.txt", "dx2003_hybrid_calls.csv") # cdis x xtex
+FMXTqQ <- parseFiles("Clat_x_Xtex.pl.names.txt", "Clat_x_Xtex.admixest.txt", "Clat_x_Xtex.Q12.txt", "dx2003_hybrid_calls.csv") # Clat x xtex
 
 CDXTqQ <- CDXTqQ %>% mutate(qmean = 1-qmean) # entropy flipped x-axis values for CDxXT; this keeps CD in lower left and XT in lower right corners of triangle to keep consistency with other plots
 
@@ -115,10 +117,10 @@ trianglePlot <- function(qQ, ll, lr, title){
           axis.text = element_text(size=12),
           axis.title = element_text(size = 14),
           plot.title = element_text(size = 16, face = "bold"),
-          legend.position = c(1, 1),
-          legend.justification = c(1,1),
-          legend.text = element_text(size = 12),
-          legend.title = element_text(size = 14, face = "bold"),
+          legend.position = c(0.675, 1),
+          legend.justification = c("left", "top"),
+          legend.text = element_text(size = 14),
+          legend.title = element_text(size = 15, face = "bold"),
           legend.background = element_rect(fill = "transparent")
           ) +
     ylab(expression(bold("Q" ["12"]))) +
