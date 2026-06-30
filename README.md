@@ -1,4 +1,4 @@
-# SJR_Catostomidae_Hybrids
+# San Juan River Catostomidae Hybrids
 
 This repository contains scripts and data associated with:
 
