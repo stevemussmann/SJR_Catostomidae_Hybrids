@@ -19,5 +19,3 @@ Aligned reads were processed in gstacks module of Stacks v2.64. See `stacks.slur
 ## 5. populations
 
 The populations module of Stacks v2.64 was used to do initial filtering (see `populations.slurm`) and dx2003_map.txt contained the list of samples processed.
-
-populations was also used to recover a set group of loci for the Bayesian Genomic Cline analysis (list contained in `bgc_whitelist.txt`). See `populations.bgc.slurm`.
